@@ -8,18 +8,27 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
   <div class="watchTime">
-    <h2 class="watchMinutes">00</h2>
+    <h2 class="watchTime__minutes">00</h2>
     <span>:</span>
+    <h2 class="watchTime__seconds">00</h2>
   </div>
   <div class="inputTime">
+    <h2>TimerOnline</h2>
+    <h5>Digite aqui o tempo desejado</h5>
     <form>
-      <input type="number" id="minutes" maxlength="2" />
-      <input type="number" id="seconds" maxlength="2" />
-      <button type="button" class="startCounting">Começar</button>
-      <button type="reset" class="stopCounting">Parar</button>
+      <input type="number" class="inputTime__minutes" maxlength="2" value="00" />
+      <input type="number" class="inputTime__seconds" maxlength="2" value="00" />
+  </div>
+  <div class="actions">
+    <button type="button" class="startCounting" onclick="startCounting();">Começar</button>
+      <button type="button" class=pauseCounting" onclick="pauseCounting();">Pausar</button>
+      <button type="reset" class="stopCounting" onclick="stopCounting()">Parar</button>
     </form>
   </div>
+</div>
+  <audio src="sound/shiny-ding.mp3" preload="auto" id="audioComplete"></audio>
 </body>
 <script src="script.js"></script>
 </html>
