@@ -9,26 +9,44 @@
 .watchTime{
   flex-direction: row;
   display: none;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #7abc4b;
 }
 
 .inputTime{
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #333333;
   padding: 20px;
+  width: 500px;
+  text-align: center;
 }
 
-.inputTime input{
-/* font-family: Helvetica;
-    font-size: 114px;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 0px;
-    text-shadow: 1px 1px 1px #b1bea9;
-    color: #7abc4b;
-    border: 0;
-    width: 135px;
-    background: none;
-    padding: 0;
-    margin: 0;
-    height: 100%; */
+.inputTime h2{
+  text-align: left;
+}
+
+.inputTime h5{
+  text-align: right;
+}
+
+.inputTime input, .inputTime span{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  color: #7abc4b;
+  border: 0;
+  width: 140px;
+  padding: 0;
+  margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
