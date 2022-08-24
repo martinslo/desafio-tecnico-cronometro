@@ -1,27 +1,38 @@
+const watchTime = document.querySelector(".watchTime");
+const inputTime = document.querySelector(".inputTime");
+const inputTimeMinutes = document.querySelector(".inputTime__minutes");
+const inputTimeSeconds = document.querySelector(".inputTime__seconds");
+const watchMinutes = document.querySelector(".watchTime__minutes");
+const watchSeconds = document.querySelector(".watchTime__seconds");
+const song = document.querySelector("#audioComplete");
+let intervalId;
+
 function startCounting() {
-  let inputMinutes = parseInt(60 * document.querySelector(".inputTime__minutes").value);
-  let inputSeconds = parseInt(document.querySelector(".inputTime__seconds").value);
+  watchTime.style.display = "block";
+  inputTime.style.display = "none";
+
+  let inputMinutes = parseInt(60 * inputTimeMinutes.value);
+  let inputSeconds = parseInt(inputTimeSeconds.value);
   let timer = inputMinutes + inputSeconds;
 
-  setInterval(function() {
+  intervalId = setInterval(function () {
     let minutes = parseInt(timer / 60, 10);
     let seconds = parseInt(timer % 60, 10);
-    let watchMinutes = document.querySelector(".watchTime__minutes");
-    let watchSeconds = document.querySelector(".watchTime__seconds");
 
     watchMinutes.innerHTML = minutes.toString().padStart(2, "0");
     watchSeconds.innerHTML = seconds.toString().padStart(2, "0");
-    console.log("timer", timer);
-    if(timer > 0) timer--;
-    else{
-      clearInterval(1);
-      document.querySelector("#audioComplete").play();
-    } 
+    if (timer > 0) timer--;
+    else {
+      clearInterval(intervalId);
+      song.play();
+      watchTime.style.display = "none";
+      inputTime.style.display = "block";
+    }
   }, 1000);
 }
 
 function pauseCounting() {
-  clearInterval(1);
+  clearInterval(intervalId);
   let inputMinutes = document.querySelector(".inputTime__minutes");
   let inputSeconds = document.querySelector(".inputTime__seconds");
   let watchMinutes = document.querySelector(".watchTime__minutes").innerText;
@@ -32,13 +43,8 @@ function pauseCounting() {
 }
 
 function stopCounting() {
-  clearInterval(1);
-  let minutes = 0;
-  let seconds = 0;
-  
-  let watchMinutes = document.querySelector(".watchTime__minutes");
-  let watchSeconds = document.querySelector(".watchTime__seconds");
+  clearInterval(intervalId);
 
-  watchMinutes.innerHTML = minutes.toString().padStart(2, "0");
-  watchSeconds.innerHTML = seconds.toString().padStart(2, "0");
+  watchTime.style.display = "none";
+  inputTime.style.display = "block";
 }
